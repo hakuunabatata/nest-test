@@ -8,17 +8,17 @@ import {
 } from '@nestjs/common'
 import { User } from '@prisma/client'
 import { hash } from 'bcryptjs'
-import { z } from 'zod'
-import { PrismaService } from '../services'
 import { ZodValidationPipe } from 'src/pipes'
+import { z as zod } from 'zod'
+import { PrismaService } from '../services'
 
-const accountBodySchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  password: z.string(),
+const accountBodySchema = zod.object({
+  name: zod.string(),
+  email: zod.string().email(),
+  password: zod.string(),
 })
 
-type AccountBodySchema = z.infer<typeof accountBodySchema>
+type AccountBodySchema = zod.infer<typeof accountBodySchema>
 
 @Controller('accounts')
 export class AccountController {
