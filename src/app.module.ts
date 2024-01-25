@@ -1,6 +1,12 @@
 import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { AccountController, AuthModule, PrismaService, envSchema } from '.'
+import {
+  AccountController,
+  AuthController,
+  AuthModule,
+  PrismaService,
+  envSchema,
+} from '.'
 
 @Module({
   imports: [
@@ -10,7 +16,7 @@ import { AccountController, AuthModule, PrismaService, envSchema } from '.'
     }),
     AuthModule,
   ],
-  controllers: [AccountController],
+  controllers: [AccountController, AuthController],
   providers: [PrismaService],
 })
 export class AppModule {}

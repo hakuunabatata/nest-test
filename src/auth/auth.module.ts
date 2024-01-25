@@ -9,6 +9,7 @@ import { Env } from '../env'
     PassportModule,
     JwtModule.registerAsync({
       inject: [ConfigService],
+      global: true,
       async useFactory(config: ConfigService<Env>) {
         const privateKey = config.get('JWT_PRIVATE_KEY', { infer: true })
         const publicKey = config.get('JWT_PUBLIC_KEY', { infer: true })
