@@ -5,6 +5,7 @@ import {
   AuthController,
   AuthModule,
   PrismaService,
+  QuestionController,
   envSchema,
 } from '.'
 
@@ -16,7 +17,7 @@ import {
     }),
     AuthModule,
   ],
-  controllers: [AccountController, AuthController],
+  controllers: [AccountController, AuthController, QuestionController],
   providers: [PrismaService],
 })
 export class AppModule {}
