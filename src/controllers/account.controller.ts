@@ -8,6 +8,7 @@ import {
 } from '@nestjs/common'
 import { User } from '@prisma/client'
 import { PrismaService } from '../services'
+import { hash } from 'bcryptjs'
 
 @Controller('accounts')
 export class AccountController {
@@ -28,6 +29,8 @@ export class AccountController {
 
     if (emailAlreadyExists) throw new ConflictException('Email already created')
 
-    return this.prisma.user.create({ data: { name, email, password } })
+    return this.prisma.user.create({
+      data: { name, email, password: await hash(password, 8) },
+    })
   }
 }
